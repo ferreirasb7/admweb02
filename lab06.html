@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribuição Multicanal — 6 canais combinados</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}.canais{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:14px}.canal{background:#fff;border:2px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:.85rem;color:#334155;cursor:pointer;display:flex;gap:8px;align-items:center;font-weight:600}.canal input{width:16px;height:16px;cursor:pointer}.canal:hover{border-color:#0284c7;background:#f0f9ff}.resultado{background:#dcfce7;border-left:4px solid #16a34a;padding:14px;border-radius:6px;font-size:.9rem;color:#166534;margin-bottom:12px}.resultado span{font-weight:900;font-size:1.15rem}.info{background:#e0f2fe;border-left:4px solid #0284c7;padding:10px 14px;border-radius:6px;font-size:.8rem;color:#0369a1}
+  </style>
+</head>
+<body>
+<h2>📢 Distribuição Multicanal</h2><div class="canais"><label class="canal"><input type="checkbox" data-alc="2000" checked> 🎬 YouTube</label><label class="canal"><input type="checkbox" data-alc="1500" checked> 📷 Instagram</label><label class="canal"><input type="checkbox" data-alc="800"> 📘 Facebook</label><label class="canal"><input type="checkbox" data-alc="1200" checked> 📝 Blog</label><label class="canal"><input type="checkbox" data-alc="900"> 📧 E-mail</label><label class="canal"><input type="checkbox" data-alc="600"> 🐦 Twitter/X</label></div><div class="resultado" id="resultado"><strong>Alcance estimado:</strong> <span id="alcance">5.400</span> pessoas</div><div class="info" id="dicaCanal">Marque canais para calcular o alcance estimado.</div>
+  <script>
+function atualizar(){var total=0;var qtd=0;document.querySelectorAll(".canal input").forEach(function(i){if(i.checked){total+=parseInt(i.dataset.alc);qtd++;}});var multiplicador=qtd>=3?1.4:1;var bonus=Math.round(total*(multiplicador-1));var totalFinal=total+bonus;document.getElementById("alcance").textContent=totalFinal.toLocaleString("pt-BR");var dica=document.getElementById("dicaCanal");if(qtd>=3){dica.textContent="🚀 Efeito multicanal ativado! "+qtd+" canais combinados têm alcance maior que a soma — público cruza entre plataformas.";}else if(qtd>=1){dica.textContent="👍 "+qtd+" canal(is) ativo(s). Combine 3 ou mais para ativar efeito multiplicador.";}else{dica.textContent="Nenhum canal marcado.";}}document.querySelectorAll(".canal input").forEach(function(i){i.addEventListener("change",atualizar);});atualizar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+====================================================
+RELATÓRIO FINAL — AGÊNCIA DIGITAL (TEMA 02)
+Estratégia de Conteúdo Avançada
+Data: 25/11/2026, 14:58:41
+Missões concluídas: 0 de 12
+====================================================
+
+🏪 NEGÓCIO ESCOLHIDO
+Nome: yellow jacket
+Tipo: Loja de roupas
+Descrição: Aqui você encontra o melhor da moda masculina jovem, com peças que unem estilo urbano, conforto e autenticidade. De camisetas oversized e moletons pesados a calças cargo e acessórios que fecham o visual tudo pensado para acompanhar o seu ritmo, do rolê com os amigos ao dia a dia.
+
+----------------------------------------------------
+🎯 MISSÕES PRÁTICAS
+----------------------------------------------------
+[ ] 🎭 Persona
+    → juan, um estudante de 16 anos que busca roupas com um estilo que ele viu no tiktok
+
+[ ] 🎯 Objetivo SMART
+    → conseguir 30 vendas no dia, ou 5 mil por semana.
+
+[ ] 🗺️ Jornada do Consumidor
+    → Videos da loja em redes sociais -> ver o site onde tem o boneco 3d para ver as roupas vendidas e as combinações possiveis/ver as peças, valores e como fica no corpo -> comparar com concorrentes -> ir a loja e comprar as peças com atentimento acolhedor/comprar pela internet e esperar a resposta de nossa equipe.
+
+[ ] 💡 Tópicos de Conteúdo
+    → Como lavar determinadas peças para melhor cuidado -> Como achar devido topico no site -> como participar dos sorteios da loja -> Veio uma roupa da contraria que voce pediu? contate a equipe -> Como chegar a loja fisica
+
+[ ] ✍️ Conteúdo (publicação)
+    → Criar um vídeo para Instagram e TikTok mostrando os lançamentos do mês, apresentando as roupas em diferentes tipos de corpos e tamanhos. Mostrar também algumas combinações possíveis utilizando o provador 3D do site, incentivando os clientes a conhecerem as peças e montarem seus próprios looks.
+
+[ ] 📢 Distribuição
+    → Divulgar os conteúdos no Instagram e TikTok, com vídeos curtos mostrando os lançamentos, tendências e combinações de roupas. Utilizar o YouTube para vídeos mais completos, mostrando como as peças ficam em diferentes corpos e tamanhos. Também divulgar o site nas redes sociais para incentivar as pessoas a utilizarem o provador 3D.
+
+[ ] 🎯 Personalização
+    →  Oferecer recomendações de roupas e combinações de acordo com o estilo de cada cliente. Utilizar o provador 3D para que cada pessoa possa criar um boneco semelhante ao seu corpo e experimentar diferentes peças. Assim, o cliente consegue visualizar melhor como as roupas podem ficar antes de comprar.
+
+[ ] 🔍 SEO
+    → Utilizar palavras-chave relacionadas aos produtos da loja, como moda masculina jovem, camisetas oversized, moletons masculinos e calças cargo. Criar títulos e descrições que facilitem encontrar a Yellow Jacket nos mecanismos de busca. Também manter o site organizado, com fotos, preços e informações claras sobre cada peça.
+
+[ ] ❤️ Engajamento
+    → Criar enquetes e desafios nas redes sociais para incentivar os seguidores a participarem. Promover sorteios e competições utilizando o provador 3D, premiando quem criar as combinações mais interessantes. Responder aos comentários e mensagens dos clientes, além de compartilhar fotos e vídeos de pessoas utilizando as roupas da loja, com autorização.
+
+[ ] 🔄 Iteração
+    → Observar quais vídeos e publicações conseguem mais visualizações, curtidas, comentários e compartilhamentos. Analisar quais produtos despertam mais interesse e quais combinações são mais populares no provador 3D. Utilizar essas informações para melhorar os próximos conteúdos, divulgar as peças mais procuradas e entender melhor as preferências dos clientes.
+
+[ ] 🚀 Tendências
+    → Um video criado por i.a sobre a historia da loja, as principais pessoas que mantem a loja de pé e etc (por estilo das historinhas das frutas virais que aparecem no tiktok)
+
+[ ] 🕵️ Concorrência
+    → Nosso diferencial comparado aos concorrentes e que temos vídeos no youtube/instagram mostrando os lançamentos do mes em cada corpo especifico com cada tamanho de roupa (ex: um tamanho gg em um corpo de uma pessoa acima do peso e atletica, para voce comparar e ver se combina), e temos um site que voce pode criar um boneco 3d e criar combinações de roupa, onde quem criar a combinação mais interessante ganha premiação.
+
+----------------------------------------------------
+📄 PÁGINA DE CONTEÚDO (mini-editor)
+----------------------------------------------------
+Título SEO: Yellow jacket | Moda masculina
+URL amigável: https://seusite.com.br/yellow-jacket-
+Meta description: o melhor da moda masculina jovem
+Corpo do conteúdo:
+Aqui você encontra o melhor da moda masculina jovem, com peças que unem estilo urbano, conforto e autenticidade. De camisetas oversized e moletons pesados a calças cargo e acessórios que completam o visual, tudo é pensado para acompanhar o seu ritmo — do rolê com os amigos ao dia a dia.
+
+Na Yellow Jacket, você encontra tendências, personalidade e atitude para expressar seu próprio estilo.
+
+====================================================
+FIM DO RELATÓRIO
+====================================================

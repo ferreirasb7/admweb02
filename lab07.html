@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seletor de Segmentação — 7 estratégias da apostila</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:14px}.form label{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px}.form select{width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:.85rem;margin-bottom:8px;font-family:inherit}.form button{background:#0284c7;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.85rem}.resultado{background:#fff;border:2px solid #0284c7;border-left:5px solid #0284c7;padding:16px 18px;border-radius:10px;font-size:.88rem;color:#334155;line-height:1.7}.resultado h4{font-size:1rem;color:#0369a1;margin-bottom:6px}.resultado strong{color:#0f172a}
+  </style>
+</head>
+<body>
+<h2>🎯 Seletor de Segmentação</h2><div class="form"><label>Qual cenário se aplica ao seu caso?</label><select id="selCen"><option value="1">Cliente novo chegando pela primeira vez</option><option value="2">Cliente recorrente que já comprou antes</option><option value="3">Visitante abandonou o carrinho</option><option value="4">Cliente que abriu e-mail mas não clicou</option><option value="5">Usuário navegando por categoria específica</option></select><button type="button" id="btnVer">Ver estratégia</button></div><div class="resultado" id="resultSeg">Selecione um cenário.</div>
+  <script>
+var ops={"1":{"titulo":"Segmentação por Público-Alvo","desc":"Cliente novo ainda não tem histórico. Divida em grupos por demografia e interesses (ex: iniciante × avançado) para oferecer conteúdo introdutório adequado."},"2":{"titulo":"E-mails Personalizados + Recomendações","desc":"Cliente recorrente já demonstrou preferências. E-mails com recomendações baseadas em compras anteriores aumentam conversão significativamente."},"3":{"titulo":"Anúncios Segmentados","desc":"Cliente que abandonou o carrinho pode ser impactado por anúncios segmentados com o produto específico — reduz ruído e aumenta conversão."},"4":{"titulo":"Personalização de Conteúdo","desc":"Cliente engajou parcialmente. Personalize o próximo e-mail com conteúdo relevante ao que ele abriu antes."},"5":{"titulo":"Experiência do Usuário Personalizada","desc":"Usuário em navegação ativa. Adaptar a página inicial para exibir produtos da categoria que ele está vendo aumenta relevância."}};document.getElementById("btnVer").addEventListener("click",function(){var id=document.getElementById("selCen").value;var op=ops[id];document.getElementById("resultSeg").innerHTML="<h4>✅ Estratégia recomendada: "+op.titulo+"</h4><strong>Como aplicar:</strong> "+op.desc;});
+  </script>
+</body>
+</html>

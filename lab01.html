@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construtor de Persona — passo 4 da análise de público-alvo</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}h3{font-size:.95rem;color:#0f172a;margin:16px 0 8px}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px}.form label{display:block;font-size:.78rem;font-weight:700;margin-top:8px;margin-bottom:3px}.form input,.form textarea{width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit;font-size:.85rem}.form textarea{min-height:50px;resize:vertical}.form label:first-child{margin-top:0}.preview{background:#fff;border:2px solid #0284c7;border-radius:12px;padding:18px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}.avatar{width:64px;height:64px;background:linear-gradient(135deg,#0284c7,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;flex-shrink:0}.info{flex:1;min-width:200px}.sub{font-size:.7rem;color:#64748b;font-weight:800;letter-spacing:.5px}.info h5{font-size:1.1rem;color:#0f172a;margin:2px 0 6px}.info p{font-size:.84rem;color:#334155;margin-bottom:4px;line-height:1.5}.info strong{color:#0369a1}
+  </style>
+</head>
+<body>
+<h2>🎭 Construtor de Persona</h2><div class="form"><label>Nome fictício:</label><input type="text" id="pNome" value="Ana Souza"><label>Contexto (idade, profissão):</label><input type="text" id="pIdade" value="34 anos, gerente comercial"><label>Objetivo principal:</label><textarea id="pObjetivo">Encontrar soluções que economizem tempo no trabalho.</textarea><label>Desafio atual:</label><textarea id="pDesafio">Não tem tempo de pesquisar em vários sites diferentes.</textarea></div><h3>Persona criada:</h3><div class="preview" id="preview"><div class="avatar">👤</div><div class="info"><span class="sub">PERSONA ATIVA</span><h5 id="pvNome">Ana Souza</h5><p><strong>Contexto:</strong> <span id="pvIdade">34 anos, gerente comercial</span></p><p><strong>Objetivo:</strong> <span id="pvObjetivo">Encontrar soluções que economizem tempo no trabalho.</span></p><p><strong>Desafio:</strong> <span id="pvDesafio">Não tem tempo de pesquisar em vários sites diferentes.</span></p></div></div>
+  <script>
+function atualizar(){var nome=document.getElementById("pNome").value||"(sem nome)";var idade=document.getElementById("pIdade").value||"—";var obj=document.getElementById("pObjetivo").value||"—";var des=document.getElementById("pDesafio").value||"—";document.getElementById("pvNome").textContent=nome;document.getElementById("pvIdade").textContent=idade;document.getElementById("pvObjetivo").textContent=obj;document.getElementById("pvDesafio").textContent=des;}["pNome","pIdade","pObjetivo","pDesafio"].forEach(function(id){document.getElementById(id).addEventListener("input",atualizar);});atualizar();
+  </script>
+</body>
+</html>

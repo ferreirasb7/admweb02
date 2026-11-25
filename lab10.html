@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Engajamento — CTA e interação</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}h3{font-size:.95rem;color:#0f172a;margin:16px 0 8px}.pub{background:#fff;border:2px solid #cbd5e1;border-radius:12px;padding:16px;margin-bottom:14px}.pub-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}.pub-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem}.pub-meta strong{font-size:.9rem;color:#0f172a;display:block}.pub-meta small{font-size:.75rem;color:#64748b}.pub-texto{font-size:.9rem;color:#334155;line-height:1.6;margin-bottom:12px;padding:10px;background:#f8fafc;border-radius:8px;border-left:3px solid #0284c7}.pub-cta{background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s;font-family:inherit}.pub-cta:hover{background:#0369a1;transform:translateY(-1px)}.pub-cta:active{transform:scale(.97)}.pub-stats{display:flex;gap:16px;margin-top:12px;font-size:.8rem;color:#64748b}.pub-stats span{display:flex;align-items:center;gap:4px;cursor:pointer;padding:4px 8px;border-radius:6px;transition:.2s}.pub-stats span:hover{background:#f0f9ff;color:#0284c7}.pub-stats span.ativo{color:#0284c7;font-weight:700}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:14px}.form label{display:block;font-size:.78rem;font-weight:700;margin-top:8px;margin-bottom:3px}.form label:first-child{margin-top:0}.form input,.form textarea{width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit;font-size:.85rem}.form textarea{min-height:60px;resize:vertical}.comparacao{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.comp-card{background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:14px}.comp-card.vencedor{border-color:#16a34a;background:#f0fdf4}.comp-card h4{font-size:.85rem;color:#0f172a;margin-bottom:8px}.comp-card .metrica{display:flex;justify-content:space-between;font-size:.8rem;padding:4px 0;border-bottom:1px dashed #e2e8f0}.comp-card .metrica:last-child{border:none}.comp-card .metrica strong{color:#0284c7}.resultado{background:#e0f2fe;border-left:4px solid #0284c7;padding:12px 16px;border-radius:6px;font-size:.85rem;color:#0369a1;line-height:1.6;margin-top:14px}@media(max-width:600px){.comparacao{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<h2>❤️ Simulador de Engajamento</h2>
+<h3>1. Crie sua publicação:</h3>
+<div class="form">
+  <label>Texto da publicação:</label>
+  <textarea id="txt-pub">Seu notebook está lento? Descubra 5 maneiras de melhorar o desempenho sem comprar outro! Agende uma avaliação com nossa equipe.</textarea>
+  <label>Chamada para ação (CTA):</label>
+  <input type="text" id="txt-cta" value="Solicite seu orçamento agora!">
+  <label>Pergunta para estimular comentários (opcional):</label>
+  <input type="text" id="txt-pergunta" value="Qual seu maior problema com o computador hoje?">
+</div>
+<h3>2. Prévia da publicação:</h3>
+<div class="pub" id="pub-preview">
+  <div class="pub-header">
+    <div class="pub-avatar">TF</div>
+    <div class="pub-meta"><strong>TechFix Assistência Técnica</strong><small>agora mesmo</small></div>
+  </div>
+  <div class="pub-texto" id="pv-texto">Seu notebook está lento? Descubra 5 maneiras de melhorar o desempenho sem comprar outro! Agende uma avaliação com nossa equipe.</div>
+  <button class="pub-cta" id="btn-cta" onclick="clicarCTA()">Solicite seu orçamento agora!</button>
+  <div class="pub-stats">
+    <span id="stat-curtir" onclick="curtir()">👍 <b id="num-curtir">0</b></span>
+    <span id="stat-comentar" onclick="comentar()">💬 <b id="num-comentar">0</b></span>
+    <span id="stat-compartilhar" onclick="compartilhar()">🔗 <b id="num-compartilhar">0</b></span>
+  </div>
+  <div id="pergunta-box" style="margin-top:10px;padding:10px;background:#f0f9ff;border-radius:8px;font-size:.83rem;color:#0369a1;display:none;">
+    ❓ <span id="pv-pergunta"></span>
+  </div>
+</div>
+<h3>3. Compare duas publicações:</h3>
+<div class="comparacao">
+  <div class="comp-card" id="comp-a">
+    <h4>📘 Publicação A (com CTA + pergunta)</h4>
+    <div class="metrica"><span>Curtidas</span><strong id="a-curtir">0</strong></div>
+    <div class="metrica"><span>Comentários</span><strong id="a-comentar">0</strong></div>
+    <div class="metrica"><span>Compartilhamentos</span><strong id="a-compartilhar">0</strong></div>
+    <div class="metrica"><span>Score de engajamento</span><strong id="a-score">0</strong></div>
+  </div>
+  <div class="comp-card" id="comp-b">
+    <h4>📘 Publicação B (sem CTA, sem pergunta)</h4>
+    <div class="metrica"><span>Curtidas</span><strong id="b-curtir">0</strong></div>
+    <div class="metrica"><span>Comentários</span><strong id="b-comentar">0</strong></div>
+    <div class="metrica"><span>Compartilhamentos</span><strong id="b-compartilhar">0</strong></div>
+    <div class="metrica"><span>Score de engajamento</span><strong id="b-score">0</strong></div>
+  </div>
+</div>
+<div class="resultado" id="resultado">Interaja com a publicação acima para ver o simulador comparar.</div>
+<script>
+var stats = { curtir:0, comentar:0, compartilhar:0 };
+var ctaClicado = false;
+function atualizarPreview(){
+  document.getElementById("pv-texto").textContent = document.getElementById("txt-pub").value || "(sem texto)";
+  document.getElementById("btn-cta").textContent = document.getElementById("txt-cta").value || "CTA";
+  var pergunta = document.getElementById("txt-pergunta").value.trim();
+  var box = document.getElementById("pergunta-box");
+  if(pergunta){ box.style.display = "block"; document.getElementById("pv-pergunta").textContent = pergunta; }
+  else { box.style.display = "none"; }
+  calcularComparacao();
+}
+function clicarCTA(){ ctaClicado = true; atualizarPreview(); }
+function curtir(){ stats.curtir++; document.getElementById("num-curtir").textContent = stats.curtir; document.getElementById("stat-curtir").classList.add("ativo"); calcularComparacao(); }
+function comentar(){ stats.comentar++; document.getElementById("num-comentar").textContent = stats.comentar; document.getElementById("stat-comentar").classList.add("ativo"); calcularComparacao(); }
+function compartilhar(){ stats.compartilhar++; document.getElementById("num-compartilhar").textContent = stats.compartilhar; document.getElementById("stat-compartilhar").classList.add("ativo"); calcularComparacao(); }
+function calcularComparacao(){
+  var temCTA = document.getElementById("txt-cta").value.trim().length > 0;
+  var temPergunta = document.getElementById("txt-pergunta").value.trim().length > 0;
+  var bonusCTA = temCTA ? 1.4 : 1;
+  var bonusPergunta = temPergunta ? 1.6 : 1;
+  var aCurtir = Math.round(stats.curtir * 1.2 * bonusCTA * bonusPergunta);
+  var aComentar = Math.round(stats.comentar * bonusPergunta * 2);
+  var aCompartilhar = Math.round(stats.compartilhar * bonusCTA);
+  var aScore = aCurtir + aComentar*2 + aCompartilhar*3;
+  var bCurtir = Math.round(stats.curtir * 0.8);
+  var bComentar = Math.round(stats.comentar * 0.5);
+  var bCompartilhar = Math.round(stats.compartilhar * 0.7);
+  var bScore = bCurtir + bComentar*2 + bCompartilhar*3;
+  document.getElementById("a-curtir").textContent = aCurtir;
+  document.getElementById("a-comentar").textContent = aComentar;
+  document.getElementById("a-compartilhar").textContent = aCompartilhar;
+  document.getElementById("a-score").textContent = aScore;
+  document.getElementById("b-curtir").textContent = bCurtir;
+  document.getElementById("b-comentar").textContent = bComentar;
+  document.getElementById("b-compartilhar").textContent = bCompartilhar;
+  document.getElementById("b-score").textContent = bScore;
+  document.getElementById("comp-a").classList.toggle("vencedor", aScore > bScore);
+  document.getElementById("comp-b").classList.toggle("vencedor", bScore > aScore);
+  var res = document.getElementById("resultado");
+  if(aScore === 0 && bScore === 0){ res.textContent = "Interaja com a publicação acima para ver o simulador comparar."; }
+  else if(aScore > bScore){ res.textContent = "🏆 Publicação A venceu! CTA + pergunta + interação geraram " + aScore + " pontos contra " + bScore + " da B. Isso mostra que chamada clara e pergunta estimulam engajamento."; }
+  else if(bScore > aScore){ res.textContent = "Publicação B venceu por " + (bScore - aScore) + " pontos. Curioso — geralmente A ganha. Tente adicionar CTA e pergunta para ver a diferença."; }
+  else { res.textContent = "Empate técnico. Continue interagindo para ver a diferença entre as duas abordagens."; }
+}
+["txt-pub","txt-cta","txt-pergunta"].forEach(function(id){ document.getElementById(id).addEventListener("input", atualizarPreview); });
+atualizarPreview();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar de Tendências — 10 tendências para avaliar</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}h3{font-size:.95rem;color:#0f172a;margin:16px 0 8px}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:14px}.form label{display:block;font-size:.78rem;font-weight:700;margin-bottom:4px}.form input{width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit;font-size:.85rem}.tendencia{background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;transition:.2s}.tendencia.alta{border-color:#16a34a;background:#f0fdf4}.tendencia.media{border-color:#f59e0b;background:#fffbeb}.tendencia.baixa{border-color:#dc2626;background:#fef2f2}.tendencia .emoji{font-size:1.5rem;flex-shrink:0}.tendencia .info{flex:1;min-width:200px}.tendencia .info strong{font-size:.9rem;color:#0f172a;display:block}.tendencia .info small{font-size:.76rem;color:#64748b}.tendencia select{padding:6px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit;font-size:.8rem;background:#fff;cursor:pointer}.radar{background:#fff;border:2px solid #0284c7;border-radius:12px;padding:16px;margin-top:14px}.radar h4{font-size:.9rem;color:#0369a1;margin-bottom:10px}.radar-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:.84rem}.radar-item .barra-fundo{flex:1;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden}.radar-item .barra{height:100%;border-radius:4px;transition:width .3s}.radar-item .nivel{font-size:.75rem;font-weight:700;width:60px;text-align:right}.resumo{background:#e0f2fe;border-left:4px solid #0284c7;padding:12px 16px;border-radius:6px;font-size:.85rem;color:#0369a1;line-height:1.6;margin-top:14px}
+  </style>
+</head>
+<body>
+<h2>🚀 Radar de Tendências</h2>
+<div class="form">
+  <label>Sua persona (para avaliar relevância):</label>
+  <input type="text" id="persona" value="João, 19 anos, estudante universitário, usa notebook diariamente">
+</div>
+<h3>Avalie cada tendência para a sua persona:</h3>
+<div id="lista-tendencias"></div>
+<h3>Radar de priorização:</h3>
+<div class="radar" id="radar">
+  <h4>📊 Relevância por tendência</h4>
+  <div id="radar-itens"></div>
+</div>
+<div class="resumo" id="resumo">Avalie as tendências acima para ver quais merecem investimento.</div>
+<script>
+var TENDENCIAS = [
+  {id:"video", emoji:"🎬", nome:"Vídeo dominante", desc:"Vídeos curtos e longos como formato principal de consumo."},
+  {id:"ia", emoji:"🤖", nome:"Inteligência Artificial", desc:"IA na criação, personalização e automação de conteúdo."},
+  {id:"ra", emoji:"🕶️", nome:"RA/RV", desc:"Realidade aumentada e virtual em experiências de marca."},
+  {id:"voz", emoji:"🎙️", nome:"Busca por voz", desc:"Otimização para comandos de voz e assistentes."},
+  {id:"social", emoji:"🛒", nome:"E-commerce social", desc:"Compra direta dentro das redes sociais."},
+  {id:"ugc", emoji:"📸", nome:"UGC", desc:"Conteúdo gerado pelo usuário como prova social."},
+  {id:"sust", emoji:"🌱", nome:"Sustentabilidade", desc:"Propósito e práticas sustentáveis como diferencial."},
+  {id:"priv", emoji:"🔒", nome:"Privacidade", desc:"Transparência no uso de dados e cookies."},
+  {id:"context", emoji:"🎯", nome:"Personalização contextual", desc:"Conteúdo adaptado ao momento e contexto do usuário."},
+  {id:"novas", emoji:"🆕", nome:"Novas plataformas", desc:"Explorar plataformas emergentes antes da concorrência."}
+];
+var avaliacoes = {};
+function renderizar(){
+  var lista = document.getElementById("lista-tendencias");
+  lista.innerHTML = "";
+  TENDENCIAS.forEach(function(t){
+    var div = document.createElement("div");
+    div.className = "tendencia";
+    div.id = "t-" + t.id;
+    div.innerHTML =
+      '<span class="emoji">' + t.emoji + '</span>' +
+      '<div class="info"><strong>' + t.nome + '</strong><small>' + t.desc + '</small></div>' +
+      '<select onchange="avaliar(\'' + t.id + '\', this.value)">' +
+        '<option value="">-- relevância --</option>' +
+        '<option value="alta">🟢 Alta</option>' +
+        '<option value="media">🟡 Média</option>' +
+        '<option value="baixa">🔴 Baixa</option>' +
+      '</select>';
+    lista.appendChild(div);
+  });
+  atualizarRadar();
+}
+function avaliar(id, valor){
+  avaliacoes[id] = valor;
+  var el = document.getElementById("t-" + id);
+  el.className = "tendencia" + (valor ? " " + valor : "");
+  atualizarRadar();
+}
+function atualizarRadar(){
+  var radar = document.getElementById("radar-itens");
+  radar.innerHTML = "";
+  var alta = 0, media = 0, baixa = 0;
+  TENDENCIAS.forEach(function(t){
+    var v = avaliacoes[t.id];
+    if(!v) return;
+    if(v === "alta") alta++;
+    else if(v === "media") media++;
+    else baixa++;
+    var pct = v === "alta" ? 100 : (v === "media" ? 60 : 25);
+    var cor = v === "alta" ? "#16a34a" : (v === "media" ? "#f59e0b" : "#dc2626");
+    var label = v === "alta" ? "Alta" : (v === "media" ? "Média" : "Baixa");
+    var item = document.createElement("div");
+    item.className = "radar-item";
+    item.innerHTML =
+      '<span style="width:20px;">' + t.emoji + '</span>' +
+      '<span style="width:180px;font-weight:600;">' + t.nome + '</span>' +
+      '<div class="barra-fundo"><div class="barra" style="width:' + pct + '%;background:' + cor + ';"></div></div>' +
+      '<span class="nivel" style="color:' + cor + ';">' + label + '</span>';
+    radar.appendChild(item);
+  });
+  var res = document.getElementById("resumo");
+  var total = alta + media + baixa;
+  if(total === 0){ res.textContent = "Avalie as tendências acima para ver quais merecem investimento."; }
+  else if(alta > 0){ res.textContent = "🎯 " + alta + " tendência(s) de alta relevância para a persona. Priorize essas no plano de conteúdo. " + (media > 0 ? media + " de média relevância podem entrar como teste. " : "") + (baixa > 0 ? baixa + " de baixa relevância devem ser ignoradas por enquanto." : ""); }
+  else if(media > 0){ res.textContent = "⚠️ Nenhuma tendência de alta relevância. " + media + " de média relevância podem ser testadas com cautela. Revise a persona ou o mercado."; }
+  else { res.textContent = "❌ Todas as tendências foram marcadas como baixa relevância. Isso pode indicar que a persona está mal definida ou que o mercado é conservador."; }
+}
+renderizar();
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador de Concorrência — matriz de análise</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}h3{font-size:.95rem;color:#0f172a;margin:16px 0 8px}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:14px}.form label{display:block;font-size:.78rem;font-weight:700;margin-top:8px;margin-bottom:3px}.form label:first-child{margin-top:0}.form input{width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit;font-size:.85rem}.matriz{background:#fff;border:2px solid #cbd5e1;border-radius:12px;overflow:hidden;margin-bottom:14px}.matriz table{width:100%;border-collapse:collapse;font-size:.84rem}.matriz th{background:#0284c7;color:#fff;padding:10px 12px;text-align:left;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px}.matriz td{padding:10px 12px;border-bottom:1px solid #e2e8f0;vertical-align:middle}.matriz tr:last-child td{border-bottom:none}.matriz select{padding:5px 8px;border:1px solid #cbd5e1;border-radius:5px;font-family:inherit;font-size:.8rem;background:#fff;cursor:pointer;width:100%}.matriz .crit-nome{font-weight:700;color:#0f172a}.matriz .crit-desc{font-size:.72rem;color:#64748b;display:block;margin-top:2px}.oportunidade{background:#f0fdf4!important}.risco{background:#fef2f2!important}.empate{background:#fffbeb!important}.resumo{background:#e0f2fe;border-left:4px solid #0284c7;padding:14px 18px;border-radius:6px;font-size:.86rem;color:#0369a1;line-height:1.7;margin-top:14px}.resumo h4{font-size:.85rem;color:#0369a1;margin-bottom:6px}.resumo ul{padding-left:20px;margin-bottom:6px}.resumo li{margin-bottom:4px}
+  </style>
+</head>
+<body>
+<h2>🕵️ Comparador de Concorrência</h2>
+<div class="form">
+  <label>Seu negócio:</label>
+  <input type="text" id="negocio" value="TechFix Assistência Técnica">
+  <label>Concorrente 1:</label>
+  <input type="text" id="c1" value="Assistência Rápida PC">
+  <label>Concorrente 2:</label>
+  <input type="text" id="c2" value="InfoFix Reparos">
+</div>
+<h3>Matriz de análise (9 critérios da apostila):</h3>
+<div class="matriz">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:40%;">Critério</th>
+        <th style="width:30%;" id="th-c1">Concorrente 1</th>
+        <th style="width:30%;" id="th-c2">Concorrente 2</th>
+      </tr>
+    </thead>
+    <tbody id="matriz-body"></tbody>
+  </table>
+</div>
+<div class="resumo" id="resumo">
+  <h4>📊 Análise</h4>
+  Preencha a matriz para ver as oportunidades de diferenciação.
+</div>
+<script>
+var CRITERIOS = [
+  {id:"site", nome:"Site atualizado", desc:"Design, informação e funcionamento"},
+  {id:"blog", nome:"Blog ativo", desc:"Publicações regulares de conteúdo"},
+  {id:"seo", nome:"SEO otimizado", desc:"Título, meta, URL, palavras-chave"},
+  {id:"redes", nome:"Redes sociais ativas", desc:"Presença e frequência de posts"},
+  {id:"video", nome:"Conteúdo em vídeo", desc:"YouTube, Reels, Shorts"},
+  {id:"avaliacoes", nome:"Avaliações positivas", desc:"Google, redes, depoimentos"},
+  {id:"preco", nome:"Preço competitivo", desc:"Percepção de custo-benefício"},
+  {id:"atendimento", nome:"Atendimento rápido", desc:"Resposta ágil e suporte"},
+  {id:"garantia", nome:"Garantia clara", desc:"Política de garantia visível"}
+];
+var respostas = {};
+function renderizar(){
+  var tbody = document.getElementById("matriz-body");
+  tbody.innerHTML = "";
+  CRITERIOS.forEach(function(c){
+    var tr = document.createElement("tr");
+    tr.id = "row-" + c.id;
+    tr.innerHTML =
+      '<td><span class="crit-nome">' + c.nome + '</span><span class="crit-desc">' + c.desc + '</span></td>' +
+      '<td><select onchange="avaliar(\'' + c.id + '\',\'c1\',this.value)">' +
+        '<option value="">--</option>' +
+        '<option value="bom">✅ Bom</option>' +
+        '<option value="medio">🟡 Médio</option>' +
+        '<option value="ruim">❌ Ruim / ausente</option>' +
+      '</select></td>' +
+      '<td><select onchange="avaliar(\'' + c.id + '\',\'c2\',this.value)">' +
+        '<option value="">--</option>' +
+        '<option value="bom">✅ Bom</option>' +
+        '<option value="medio">🟡 Médio</option>' +
+        '<option value="ruim">❌ Ruim / ausente</option>' +
+      '</select></td>';
+    tbody.appendChild(tr);
+  });
+}
+function avaliar(critId, concorrente, valor){
+  if(!respostas[critId]) respostas[critId] = {};
+  respostas[critId][concorrente] = valor;
+  atualizarLinha(critId);
+  atualizarResumo();
+}
+function atualizarLinha(critId){
+  var r = respostas[critId] || {};
+  var tr = document.getElementById("row-" + critId);
+  tr.className = "";
+  if(!r.c1 || !r.c2) return;
+  if(r.c1 === "ruim" || r.c2 === "ruim"){ tr.className = "oportunidade"; }
+  else if(r.c1 === "bom" && r.c2 === "bom"){ tr.className = "risco"; }
+  else { tr.className = "empate"; }
+}
+function atualizarResumo(){
+  var oportunidades = [];
+  var riscos = [];
+  CRITERIOS.forEach(function(c){
+    var r = respostas[c.id];
+    if(!r || !r.c1 || !r.c2) return;
+    if(r.c1 === "ruim" || r.c2 === "ruim"){ oportunidades.push(c.nome); }
+    else if(r.c1 === "bom" && r.c2 === "bom"){ riscos.push(c.nome); }
+  });
+  var res = document.getElementById("resumo");
+  var html = "<h4>📊 Análise</h4>";
+  if(oportunidades.length === 0 && riscos.length === 0){
+    html += "Preencha a matriz para ver as oportunidades de diferenciação.";
+  } else {
+    if(oportunidades.length > 0){
+      html += "<strong style='color:#16a34a;'>🟢 Oportunidades de diferenciação:</strong><ul>";
+      oportunidades.forEach(function(o){ html += "<li>" + o + " — concorrente(s) fraco(s) aqui.</li>"; });
+      html += "</ul>";
+    }
+    if(riscos.length > 0){
+      html += "<strong style='color:#dc2626;'>🔴 Pontos onde os concorrentes são fortes:</strong><ul>";
+      riscos.forEach(function(r){ html += "<li>" + r + " — você precisa acompanhar ou superar.</li>"; });
+      html += "</ul>";
+    }
+    html += "<em>💡 Use as oportunidades para se diferenciar. Não copie o concorrente — encontre lacunas.</em>";
+  }
+  res.innerHTML = html;
+}
+document.getElementById("c1").addEventListener("input", function(){ document.getElementById("th-c1").textContent = this.value || "Concorrente 1"; });
+document.getElementById("c2").addEventListener("input", function(){ document.getElementById("th-c2").textContent = this.value || "Concorrente 2"; });
+renderizar();
+</script>
+</body>
+</html>

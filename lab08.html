@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Análise e Iteração — 9 componentes da apostila</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}.ciclo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:14px}.passo{background:#fff;border:2px solid #cbd5e1;border-left:4px solid #0284c7;padding:10px 14px;border-radius:8px;cursor:pointer;transition:.2s;display:flex;flex-direction:column;gap:2px}.passo:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(2,132,199,.15)}.passo .num{font-size:1.1rem;font-weight:900;color:#0284c7}.passo strong{font-size:.82rem;color:#0f172a}.passo:nth-child(2){border-left-color:#0891b2}.passo:nth-child(3){border-left-color:#10b981}.passo:nth-child(4){border-left-color:#7c3aed}.passo:nth-child(5){border-left-color:#ec4899}.passo:nth-child(6){border-left-color:#f59e0b}.passo:nth-child(7){border-left-color:#06b6d4}.passo:nth-child(8){border-left-color:#8b5cf6}.passo:nth-child(9){border-left-color:#ef4444}.info{background:#e0f2fe;border-left:4px solid #0284c7;padding:12px 14px;border-radius:6px;font-size:.85rem;color:#0369a1;line-height:1.6}
+  </style>
+</head>
+<body>
+<h2>🔄 Ciclo de Análise e Iteração</h2><div class="ciclo"><div class="passo" data-info="Ferramentas analíticas rastreiam tráfego, comportamento e conversões."><span class="num">1</span><strong>Coleta de Dados</strong></div><div class="passo" data-info="Define as métricas-chave alinhadas aos objetivos: CTR, taxa de abertura, tempo na página."><span class="num">2</span><strong>Métricas Relevantes</strong></div><div class="passo" data-info="Acompanhamento regular e em tempo real para identificar tendências."><span class="num">3</span><strong>Monitoramento</strong></div><div class="passo" data-info="Identificar padrões, pontos fortes e áreas de melhoria."><span class="num">4</span><strong>Análise de Dados</strong></div><div class="passo" data-info="Extrair insights: o que funciona, o que não funciona e por quê."><span class="num">5</span><strong>Insights</strong></div><div class="passo" data-info="Aprender com os ciclos anteriores para informar decisões futuras."><span class="num">6</span><strong>Aprendizado</strong></div><div class="passo" data-info="Ajustes nas estratégias com base no que foi aprendido."><span class="num">7</span><strong>Ajustes</strong></div><div class="passo" data-info="Testes A/B para descobrir o que ressoa melhor com o público."><span class="num">8</span><strong>Experimentação</strong></div><div class="passo" data-info="Feedback direto dos consumidores orienta as próximas iterações."><span class="num">9</span><strong>Feedback</strong></div></div><div class="info" id="infoCiclo">Clique em um componente do ciclo para ver o exemplo.</div>
+  <script>
+document.querySelectorAll(".passo").forEach(function(e){e.addEventListener("click",function(){document.getElementById("infoCiclo").textContent=e.dataset.info;});});
+  </script>
+</body>
+</html>

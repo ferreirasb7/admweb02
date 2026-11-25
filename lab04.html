@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seletor de Tópicos Estratégicos — 7 critérios</title>
+  <style>
+body{font-family:Segoe UI,sans-serif;padding:20px;background:#f8fafc;color:#0f172a}h2{font-size:1.1rem;color:#0284c7;margin-bottom:14px}.form{background:#fff;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:14px}.form label{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px}.form input{width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:.85rem;margin-bottom:8px;font-family:inherit}.form button{background:#0284c7;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.85rem}.criterios{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.crit{background:#fff;border:1px solid #cbd5e1;padding:9px 14px;border-radius:6px;font-size:.82rem;color:#334155;cursor:pointer;display:flex;gap:8px;align-items:center}.crit input{width:16px;height:16px;cursor:pointer}.resultado{background:#e0f2fe;border-left:4px solid #0284c7;padding:14px;border-radius:6px;font-size:.85rem;color:#0369a1;line-height:1.6}
+  </style>
+</head>
+<body>
+<h2>💡 Avaliador de Tópicos Estratégicos</h2><div class="form"><label>Tópico proposto:</label><input type="text" id="inTop" value="Como economizar tempo no trabalho com IA"><button type="button" id="btnAvaliar">Avaliar Tópico</button></div><div class="criterios" id="criterios"><label class="crit"><input type="checkbox" id="c1"> Pesquisa de palavras-chave feita</label><label class="crit"><input type="checkbox" id="c2"> Análise de tendências</label><label class="crit"><input type="checkbox" id="c3"> Alinhamento com objetivos da marca</label><label class="crit"><input type="checkbox" id="c4"> Atende às necessidades do público</label><label class="crit"><input type="checkbox" id="c5"> Diversifica formatos/estágios</label><label class="crit"><input type="checkbox" id="c6"> Originalidade do ângulo</label><label class="crit"><input type="checkbox" id="c7"> Relevância a longo prazo</label></div><div class="resultado" id="resultadoTop">Avalie o tópico para ver o resultado.</div>
+  <script>
+document.getElementById("btnAvaliar").addEventListener("click",function(){var t=document.getElementById("inTop").value;var ids=["c1","c2","c3","c4","c5","c6","c7"];var n=0;ids.forEach(function(id){if(document.getElementById(id).checked)n++;});var r=document.getElementById("resultadoTop");r.textContent="";if(n>=6){r.innerHTML="<strong>✅ Tópico Estratégico (nota "+(n*100/7).toFixed(0)+"%):</strong> \""+t+"\" — atende a "+n+" de 7 critérios. Pode entrar no calendário editorial.";r.style.background="#dcfce7";r.style.borderColor="#16a34a";r.style.color="#166534";}else if(n>=3){r.innerHTML="<strong>⚠️ Tópico Parcial (nota "+(n*100/7).toFixed(0)+"%):</strong> atende a "+n+" de 7. Revise os critérios faltantes antes de investir.";r.style.background="#fef3c7";r.style.borderColor="#f59e0b";r.style.color="#92400e";}else{r.innerHTML="<strong>❌ Tópico Fraco (nota "+(n*100/7).toFixed(0)+"%):</strong> atende só "+n+" de 7. Reestruture ou descarte.";r.style.background="#fee2e2";r.style.borderColor="#dc2626";r.style.color="#991b1b";}});
+  </script>
+</body>
+</html>
